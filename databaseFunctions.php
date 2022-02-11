@@ -51,5 +51,31 @@
             die("Could not connect to host :" . $pe->getMessage());
         }
     }
+    function validateUserCredentials($username, $password){ 
+        global $database_user;
+        global $database_pass;
+        global $database_host;
+        global $database_name;
+
+        try{
+            $sql = "SELECT password FROM users WHERE username=:username";
+
+            $pdo = new pdo("mysql:host=$database_host;dbname=$database_name", $database_user, $database_pass);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([
+                    'username' => $username
+                    ]);
+
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            return ($stmt->fetch()['password'] == $password);
+
+
+        }
+        catch (PDOException $pe){
+            die("Could not connect to host :" . $pe->getMessage());
+        }
+    }
 
 ?>
