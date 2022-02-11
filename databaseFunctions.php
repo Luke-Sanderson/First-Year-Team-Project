@@ -57,6 +57,34 @@
             die("Could not connect to host :" . $pe->getMessage());
         }
     }
+    function addPost($author_id, $image, $caption){
+        try{
+            $sql = "INSERT INTO posts (author_id, image, caption, votes) VALUES (:author_id, :image, :caption, 0)";
+            insertRequest($sql, [
+                    'author_id' => $author_id,
+                    'image' => $image,
+                    'caption' => $caption]);
+            echo "Added post successfully";
+        }
+        catch (PDOException $pe)
+        {
+            die("Could not connect to host :" . $pe->getMessage());
+        }
+    }
+    function addComment($post_id, $author_id, $text){
+        try{
+            $sql = "INSERT INTO comments (post_id, author_id, text) VALUES (:post_id, :author_id, :text)";
+            insertRequest($sql, [
+                    'post_id' => $post_id,
+                    'author_id' => $author_id,
+                    'text' => $text]);
+            echo "Added comment successfully";
+        }
+        catch (PDOException $pe)
+        {
+            die("Could not connect to host :" . $pe->getMessage());
+        }
+    }
     function validateUserCredentials($username, $password){
         try{
             $sql = "SELECT password FROM users WHERE username=:username";
@@ -68,5 +96,6 @@
             die("Could not connect to host :" . $pe->getMessage());
         }
     }
+
 
 ?>
