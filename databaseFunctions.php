@@ -85,6 +85,28 @@
             die("Could not connect to host :" . $pe->getMessage());
         }
     }
+    function addTag($post_id, $tag_name){
+        try{
+            $sql = "SELECT * FROM tag_post_table WHERE tag_name=:tag_name AND post_id=:post_id";
+            if (selectRequest($sql, [
+                        'tag_name' => $tag_name,
+                        'post_id' => $post_id]) -> fetch() != null){
+                echo "Tag already exists on this post";
+                return;
+            }
+
+            $sql = "INSERT INTO tag_post_table (tag_name, post_id) VALUES (:tag_name, :post_id)";
+            insertRequest($sql, [
+                        'tag_name' => $tag_name,
+                        'post_id' => $post_id]);
+            echo "Added tag successfully";
+        }
+        catch (PDOException $pe)
+        {
+            die("Could not connect to host :" . $pe->getMessage());
+        }
+
+    }
     function validateUserCredentials($username, $password){
         try{
             $sql = "SELECT password FROM users WHERE username=:username";
