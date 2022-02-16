@@ -12,8 +12,8 @@ body {
   display: grid;
   align-items: center;
   justify-content: center;
-  font-family: Arial;
-  font-weight: bold;
+  font-family: italic 2em Georgia, serif;
+  font-weight: 900;
   font-size: 50px;
 }
 #title #group {
