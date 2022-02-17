@@ -16,8 +16,8 @@ body {
   font-weight: 900;
   font-size: 50px;
 }
-#title #group {
-  height: 90px;
+#group {
+  height: 35px;
   position: absolute;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -28,7 +28,7 @@ body {
   padding-right: 20px;
   margin-bottom: 5px;
 }
-#title #group div {
+#group div {
   padding: 2px;
   border: 1px solid;
 }
