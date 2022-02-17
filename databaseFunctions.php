@@ -1,15 +1,10 @@
 <?php
-    $database_host = "dbhost.cs.man.ac.uk";
-    $database_user = "m78355ls";
-    $database_pass = "rockwindowbarkflame";
-    $database_name = "2021_comp10120_x9";
-
     function makeConnection(){
-        global $database_user;
-        global $database_pass;
-        global $database_host;
-        global $database_name;
-
+        $database_host = "dbhost.cs.man.ac.uk";
+        $database_user = "m78355ls";
+        $database_pass = "rockwindowbarkflame";
+        $database_name = "2021_comp10120_x9";
+        
         return new pdo("mysql:host=$database_host;dbname=$database_name", $database_user, $database_pass);
     }
     function selectRequest($sql, $varArray){
