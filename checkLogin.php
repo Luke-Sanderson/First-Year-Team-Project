@@ -5,6 +5,7 @@
         echo "LOGGED IN SUCCESSFULLY";
         $_SESSION['loggedin'] = true;
         $_SESSION['username'] = $_POST['fname'];
+        header('Location: UI.php');
     }
     else{
         header('Location: UI_loginPage.html?loggin=false');
