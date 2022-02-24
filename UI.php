@@ -15,7 +15,7 @@
                     height="100" width="350"></h1>
     </div>
     <div id="group">
-            <div id="post" onclick="window.open('https://youtu.be/o-YBDTqX_ZU')">Post</div>
+            <div id="post" onclick="window.open('./UI_newPost.html')">Post</div>
             <?php
 
                 session_start();
@@ -31,7 +31,7 @@
     <br />
     <br />
     <nav id="nav">
-        <div>🏠</div>
+        <div onclick="window.open('./UI.php', '_self')">🏠</div>
         <div>pet of the week</div>
         <div>(Navigation Bar)</div>
         <div>Tags</div>
