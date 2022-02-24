@@ -16,6 +16,18 @@ body {
   font-weight: 900;
   font-size: 50px;
 }
+#group {
+  height: 35px;
+  position: absolute;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  right: 0;
+  justify-self: end;
+  align-items: end;
+  grid-gap: 20px;
+  padding-right: 20px;
+  margin-bottom: 5px;
+}
 #title #group {
   height: 90px;
   position: absolute;
