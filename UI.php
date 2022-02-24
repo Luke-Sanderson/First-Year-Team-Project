@@ -16,7 +16,17 @@
     </div>
     <div id="group">
             <div id="post" onclick="window.open('https://youtu.be/o-YBDTqX_ZU')">Post</div>
-            <div id="login" onclick="window.open('https://www.google.com')">Login</div>
+            <?php
+
+                session_start();
+                if (array_key_exists("loggedin", $_SESSION)){
+                    echo '<div id="login">' . $_SESSION['username'] . '</div>';
+                }
+                else{
+                    echo '<div id="login" onclick="window.location=\'./UI_loginPage.html\'">Login</div>';
+                } ?>
+
+
         </div>
     <br />
     <br />
@@ -71,7 +81,6 @@
 
         }
         addgallery();
-
         function addsidegallery() {
             var text = '<div id="imgDiv">\
                 <img src="test.png" alt="">\
