@@ -12,9 +12,8 @@
 
     <div id="title">
         <h1 id="icon"><img src="./photos/pet_logo.png" alt=""
-                    height="100" width="350"></h1>
+                    height="85" width="310"></h1>
     </div>
-    <br />
     <div id="group">
             <div id="post">
                 <button onclick="location.href='./UI_newPost.html'" type="button" style="height:25px;width:60px" style="Center"> Post </button>
