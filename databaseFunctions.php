@@ -105,19 +105,7 @@
         {
             die("Could not connect to host :" . $pe->getMessage());
         }
-    }
-    function addPetOfTheWeek($week_of_win, $post_id){
-        try{
-            $sql = "INSERT INTO pet_of_the_week (week_of_win, post_id) VALUES (:week_of_win, :post_id)";
-            insertRequest($sql, [
-                        'week_of_win' => $week_of_win,
-                        'post_id' => $post_id]);
-            echo "Added post of the week successfully";
-        }
-        catch (PDOException $pe)
-        {
-            die("Could not connect to host :" . $pe->getMessage());
-        }
+
     }
     function validateUserCredentials($username, $password){
         try{

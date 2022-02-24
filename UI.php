@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" type="text/css" href="UI.css">
+    <link rel="stylesheet" type="text/css" href="./css/UI.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Pet Coummunity</title>
@@ -11,11 +11,13 @@
 <body>
 
     <div id="title">
-        <h1 id="icon"><img src="pet_logo.png" alt=""
+        <h1 id="icon"><img src="./photos/pet_logo.png" alt=""
                     height="100" width="350"></h1>
     </div>
     <div id="group">
-            <div id="post" onclick="window.open('./UI_newPost.html')">Post</div>
+            <div id="post">
+                <button onclick="location.href='./UI_newPost.html'" type="button" style="height:25px;width:60px" style="Center"> Post </button>
+            </div>
             <?php
 
                 session_start();
@@ -54,7 +56,7 @@
             </div>
             <div id="footer">
 
-                <h3><img src="pet_logo.png" alt=""
+                <h3><img src="./photos/pet_logo.png" alt=""
                     height="25" width="73"></h3>
             </div>
         </section>
@@ -64,11 +66,11 @@
     <script>
         function addgallery() {
             var text = '<div id="imgDiv">\
-                <img src="test.png" alt="">\
+                <img src="./photos/test.png" alt="">\
                 <p>testing❤️lol</p>\
             </div > '
             var text2 = '<div id="imgDiv">\
-                <img src="test.png" alt="">\
+                <img src="./photos/test.png" alt="">\
                 <p>testing❤️lol</p>\
             </div > '
             for (var i = 0; i < 8; i++) {
@@ -83,11 +85,11 @@
         addgallery();
         function addsidegallery() {
             var text = '<div id="imgDiv">\
-                <img src="test.png" alt="">\
+                <img src="./photos/test.png" alt="">\
                 <p>testing❤️lol</p>\
             </div > '
             var text2 = '<div id="imgDiv">\
-                <img src="test.png" alt=""> \
+                <img src="./photos/test.png" alt=""> \
                 <p>testing❤️lol</p>\
             </div>'
             for (var i = 0; i < 2; i++) {
