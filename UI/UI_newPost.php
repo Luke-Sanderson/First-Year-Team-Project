@@ -6,6 +6,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Pet Coummunity</title>
+    <?php
+    session_start(); ?>
 </head>
 
 
@@ -37,23 +39,23 @@
 
         </div>
     </nav>
-    
-    <input id="Mybutton" style="margin-left:570px;margin-top:65px;height:250px;width:250px" type=button value="➕" href="needsUPDATE.php">&nbsp;&nbsp;
-                 <!-- Need a php to upload images -->
 
-    <form action="/action_page.php" align="Center" style="font-size:150%;" style="font: bold;">&nbsp;&nbsp;
+ <!--    <input id="Mybutton" style="margin-left:570px;margin-top:65px;height:250px;width:250px" type=button value="➕" href="needsUPDATE.php">&nbsp;&nbsp;
+-->
 
+    <form action="./uploadPost.php" method="post" enctype="multipart/form-data" align="Center" style="font-size:150%;" style="font: bold;">&nbsp;&nbsp;
+        <input id="imageupload" name="imageupload" type="file"><br>
         <label for="petname" align="Center" style="font-size:150%;" style="font: bold;">PET'S NAME: </label>
         <input type="text" id="petname" name="petname" size="50"><br><br>
         <label for="tags" align="Center" style="font-size:150%;" style="font: bold;">Tags🚩</label>
         <input type="text" id="tags" name="tags" size="50"><br><br>
         <label for="caption" align="Center" style="font-size:150%;" style="font: bold;">CAPTION: </label>
         <input type="text" id="caption" name="caption" size="50"><br><br>
-         <a href="needsUPDATE.php">
-        <button type="button" style="height:40px;width:100px" style="Center"> Submit </button>
-    </a>
+
+        <input type="submit" name="submit" style="height:40px;width:100px" style="Center" value="Submit">
+
     </form>
-   
+
 
     <div id="content">
         <section>

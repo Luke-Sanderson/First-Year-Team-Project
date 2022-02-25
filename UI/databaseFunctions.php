@@ -57,6 +57,7 @@
             die("Could not connect to host :" . $pe->getMessage());
         }
     }
+
     function addPost($author_id, $image, $caption){
         try{
             $sql = "INSERT INTO posts (author_id, image, caption, votes) VALUES (:author_id, :image, :caption, 0)";
@@ -142,6 +143,15 @@
             die("Could not connect to host :" . $pe->getMessage());
         }
     }
-
+    function getPostCount(){
+        try{
+            $sql = "SELECT COUNT(*) FROM posts";
+            $stmt = selectRequest($sql, []);
+            return $stmt->fetch()["COUNT(*)"];
+        }
+        catch(PDOException $pe){
+            die("Could not connect to host :" . $pe->getMessage());
+        }
+    }
 
 ?>

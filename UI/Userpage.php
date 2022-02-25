@@ -18,7 +18,7 @@
 
         <div id="group">
             <div id="post">
-                <button onclick="location.href='./UI_newPost.html'" type="button">Post</button>
+                <button onclick="location.href='./UI_newPost.php'" type="button">Post</button>
                  <!-- Change this link to POST page -->
             </div>
             <div id="login">
