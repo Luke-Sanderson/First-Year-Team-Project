@@ -118,6 +118,7 @@
         {
             die("Could not connect to host :" . $pe->getMessage());
         }
+
     }
     function validateUserCredentials($username, $password){
         try{
