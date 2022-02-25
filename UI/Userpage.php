@@ -25,7 +25,7 @@
                 <?php
                     include "databaseFunctions.php";
                     session_start();
-                    
+
                     if (array_key_exists("loggedin", $_SESSION)){
                         echo '<div id="login">
                                 <button onclick="location.href=\'Userpage.php\'" type="button" style="height:25px;width:60px" style="Center"> '. $_SESSION['username'] . ' </button>
@@ -65,11 +65,15 @@
                 <?php
                     if (array_key_exists("loggedin", $_SESSION)){
                         echo "<h1>" . $_SESSION['username'] . "</h1>";
+
+                        $arr = getUserTotals($_SESSION['username']);
+                        echo "<h2>Likes " . $arr['likes'] . "❤️<br>";
+                        echo "Comments ". $arr['comments'] . "☁️</h2>";
                     }
                  ?>
 
-                <h2>Likes❤️<br>
-                Comments☁️</h2>
+
+
 
             </div>
             <div id="edit">
