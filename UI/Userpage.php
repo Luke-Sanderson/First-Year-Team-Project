@@ -70,10 +70,12 @@
                         echo "<h2>Likes " . $arr['likes'] . "❤️<br>";
                         echo "Comments ". $arr['comments'] . "☁️</h2>";
                     }
+                    else{
+                        echo    "<h1>Guest</h1>
+                                <h2>Likes 0❤️<br>
+                                Comments 0☁️</h2>";
+                    }
                  ?>
-
-
-
 
             </div>
             <div id="edit">
