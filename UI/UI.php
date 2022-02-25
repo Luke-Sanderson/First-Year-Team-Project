@@ -22,12 +22,14 @@
 
                 session_start();
                 if (array_key_exists("loggedin", $_SESSION)){
-                    echo '<div id="login">' . $_SESSION['username'] . '</div>';
+                    echo '<div id="login">
+                            <button onclick="location.href=\'Userpage.html\'" type="button" style="height:25px;width:60px" style="Center">' . $_SESSION['username'] . '</button>
+                        </div>';
                 }
                 else{
                     echo '<div id="login">
-                <button onclick="location.href=\'UI_loginPage.html\'" type="button" style="height:25px;width:60px" style="Center"> Login </button>
-            </div>';
+                            <button onclick="location.href=\'UI_loginPage.html\'" type="button" style="height:25px;width:60px" style="Center"> Login </button>
+                        </div>';
                 } ?>
 
 
