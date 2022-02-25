@@ -22,9 +22,24 @@
                  <!-- Change this link to POST page -->
             </div>
             <div id="login">
-                <button onclick="location.href='./UI_loginPage.html'" type="button">Login</button>
+                <?php
+                    include "databaseFunctions.php";
+                    session_start();
+                    
+                    if (array_key_exists("loggedin", $_SESSION)){
+                        echo '<div id="login">
+                                <button onclick="location.href=\'Userpage.php\'" type="button" style="height:25px;width:60px" style="Center"> '. $_SESSION['username'] . ' </button>
+                            </div>';
+                    }
+                    else{
+                        echo '<div id="login">
+                                <button onclick="location.href=\'UI_loginPage.html\'" type="button" style="height:25px;width:60px" style="Center"> Login </button>
+                            </div>';
+                    } ?>
+                <!--<button onclick="location.href='./UI_loginPage.html'" type="button">Login</button> -->
                 <!-- Change this link to EDIT page -->
                 <!-- Wait what? It should be login page right? -->
+                <!-- Added php for login but if it is EDIT page then delete php and add regular button -->
             </div>
         </div>
 
@@ -48,14 +63,11 @@
             </div>
             <div id="userinfor">
                 <?php
-                    include "databaseFunctions.php";
-
-                    session_start();
                     if (array_key_exists("loggedin", $_SESSION)){
                         echo "<h1>" . $_SESSION['username'] . "</h1>";
                     }
                  ?>
-                 
+
                 <h2>Likes❤️<br>
                 Comments☁️</h2>
 
