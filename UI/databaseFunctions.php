@@ -131,6 +131,17 @@
             die("Could not connect to host :" . $pe->getMessage());
         }
     }
+    function getUserTotals ($username){
+        try{
+            $sql = "SELECT likes, comments FROM users WHERE username=:username";
+            $stmt = selectRequest($sql, ['username' => $username]);
+
+            return $stmt->fetch();
+        }
+        catch (PDOException $pe){
+            die("Could not connect to host :" . $pe->getMessage());
+        }
+    }
 
 
 ?>
