@@ -12,7 +12,7 @@
     if(!isset($_SESSION["loggedin"])){
         $uploadOk = 0;
     }
-    if(isset($_POST["submit"])){
+    else if(isset($_POST["submit"])){
         $check = getimagesize($_FILES["imageupload"]["tmp_name"]);
         if ($check !== false){
             echo "File is an image" . $check["mime"] . ".";
