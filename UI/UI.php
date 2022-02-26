@@ -82,13 +82,22 @@
             }
             */
             var text = '<?php
-                for ($i = 1; $i <= getPostCount(); $i++) {
+                $postCount = getPostCount();
+                for ($i = $postCount; $i >= 1 ; $i--) {
                     $postInfo = getPostInfo($i);
                     echo '<div id="imgDiv">\
                             <img src="' . $postInfo['image'] . '" alt="">\
                             <p>' . $postInfo['pet_name'] . '</p>\
                             <p>' . $postInfo['caption'] . '</p>\
                          </div> ';
+                }
+                if ($postCount < 10){
+                    for ($i=0; $i < 10 - $postCount; $i++) {
+                        echo '<div id="imgDiv">\
+                            <img src="./photos/test.png" alt="">\
+                            <p>Sorry no more posts available</p>\
+                        </div > ';
+                    }
                 }
              ?>'
             console.log(text)
