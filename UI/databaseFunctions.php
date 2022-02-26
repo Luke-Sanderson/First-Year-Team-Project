@@ -171,6 +171,16 @@
             die("Could not connect to host :" . $pe->getMessage());
         }
     }
+    function getPostInfo($post_id){
+        try{
+            $sql = "SELECT * FROM posts WHERE id=:post_id";
+            $stmt = selectRequest($sql, ['post_id' => $post_id]);
+            return $stmt->fetch();
+        }
+        catch(PDOException $pe){
+            die("Could not connect to host :" . $pe->getMessage());
+        }
+    }
     function getUserID($username){
         try{
             $sql = "SELECT id FROM users WHERE username=:username";
