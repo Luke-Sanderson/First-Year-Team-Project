@@ -57,14 +57,33 @@
             die("Could not connect to host :" . $pe->getMessage());
         }
     }
-    function addPost($author_id, $image, $caption){
+
+    function addPost($author_id, $image, $petname, $caption, $tags){
         try{
-            $sql = "INSERT INTO posts (author_id, image, caption, votes) VALUES (:author_id, :image, :caption, 0)";
-            insertRequest($sql, [
-                    'author_id' => $author_id,
+            $sql = "INSERT INTO posts (author_id, image, pet_name, caption, votes) VALUES (:author_id, :image, :petname, :caption, 0)";
+
+            if ($tags == []){
+                insertRequest($sql, [
+                        'author_id' => $author_id,
+                        'image' => $image,
+                        'petname' => $petname,
+                        'caption' => $caption]);
+                return;
+            }
+
+            $pdo = makeConnection();
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute(['author_id' => $author_id,
                     'image' => $image,
+                    'petname' => $petname,
                     'caption' => $caption]);
             echo "Added post successfully";
+
+            $post_id = $pdo->lastInsertId();
+            foreach ($tags as $index => $tag_name) {
+                addTag($post_id, $tag_name);
+            }
+            echo "Added tags successfully";
         }
         catch (PDOException $pe)
         {
@@ -142,6 +161,35 @@
             die("Could not connect to host :" . $pe->getMessage());
         }
     }
-
+    function getPostCount(){
+        try{
+            $sql = "SELECT COUNT(*) FROM posts";
+            $stmt = selectRequest($sql, []);
+            return $stmt->fetch()["COUNT(*)"];
+        }
+        catch(PDOException $pe){
+            die("Could not connect to host :" . $pe->getMessage());
+        }
+    }
+    function getPostInfo($post_id){
+        try{
+            $sql = "SELECT * FROM posts WHERE id=:post_id";
+            $stmt = selectRequest($sql, ['post_id' => $post_id]);
+            return $stmt->fetch();
+        }
+        catch(PDOException $pe){
+            die("Could not connect to host :" . $pe->getMessage());
+        }
+    }
+    function getUserID($username){
+        try{
+            $sql = "SELECT id FROM users WHERE username=:username";
+            $stmt = selectRequest($sql, [username => $username]);
+            return $stmt->fetch()['id'];
+        }
+        catch(PDOException $pe){
+            die("Could not connect to host :" . $pe->getMessage());
+        }
+    }
 
 ?>

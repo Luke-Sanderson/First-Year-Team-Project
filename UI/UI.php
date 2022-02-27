@@ -16,10 +16,10 @@
     </div>
     <div id="group">
             <div id="post">
-                <button onclick="location.href='./UI_newPost.html'" type="button" style="height:25px;width:60px" style="Center"> Post </button>
+                <button onclick="location.href='./UI_newPost.php'" type="button" style="height:25px;width:60px" style="Center"> Post </button>
             </div>
             <?php
-
+                include 'databaseFunctions.php';
                 session_start();
                 if (array_key_exists("loggedin", $_SESSION)){
                     echo '<div id="login">
@@ -69,17 +69,37 @@
     </div>
     <script>
         function addgallery() {
-            var text = '<div id="imgDiv">\
+            /*var text = '<div id="imgDiv">\
                 <img src="./photos/test.png" alt="">\
                 <p>testing❤️lol</p>\
             </div > '
-            var text2 = '<div id="imgDiv">\
+             text2 = '<div id="imgDiv">\
                 <img src="./photos/test.png" alt="">\
                 <p>testing❤️lol</p>\
             </div > '
             for (var i = 0; i < 8; i++) {
-                text = text + text2
+                text += text + text2
             }
+            */
+            var text = '<?php
+                $postCount = getPostCount();
+                for ($i = $postCount; $i >= 1 ; $i--) {
+                    $postInfo = getPostInfo($i);
+                    echo '<div id="imgDiv">\
+                            <img src="' . $postInfo['image'] . '" alt="">\
+                            <p>' . $postInfo['pet_name'] . '</p>\
+                            <p>' . $postInfo['caption'] . '</p>\
+                         </div> ';
+                }
+                if ($postCount < 10){
+                    for ($i=0; $i < 10 - $postCount; $i++) {
+                        echo '<div id="imgDiv">\
+                            <img src="./photos/test.png" alt="">\
+                            <p>Sorry no more posts available</p>\
+                        </div > ';
+                    }
+                }
+             ?>'
             console.log(text)
             var container = document.getElementById('gallery');
 
