@@ -4,7 +4,7 @@
     session_start();
 
 
-    $target_dir = "./photos/profile_picture/";
+    $target_dir = "./photos/profile_pictures/";
 
     $uploadOk = 0;
 
@@ -36,14 +36,17 @@
         header('Location: UI_newUser.html?upload=false');
     }
     else{
-        move_uploaded_file($_FILES["imageupload"]["tmp_name"], $target_file);
-        addUser($_POST['username'], hash("sha256", $_POST['password']), $target_file);
-        echo "The user has been uploaded";
+        if (!isset($_FILES['imageupload']) || move_uploaded_file($_FILES["imageupload"]["tmp_name"], $target_file)){
+            addUser($_POST['username'], hash("sha256", $_POST['password']), $target_file);
+            echo "The user has been uploaded";
 
-        $_SESSION['loggedin'] = true;
-        $_SESSION['username'] = $_POST['username'];
-        $_SESSION['userID'] = getUserID($_POST['username']);
-
+            $_SESSION['loggedin'] = true;
+            $_SESSION['username'] = $_POST['username'];
+            $_SESSION['userID'] = getUserID($_POST['username']);
+        }
+        else{
+            echo "failed to move file";
+        }
         header('Location: Userpage.php');
     }
 
