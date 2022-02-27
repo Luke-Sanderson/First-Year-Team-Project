@@ -129,7 +129,12 @@
 
         function addsidegallery() {
             var text = '<div id="imgDiv">\
-                <img src="./photos/test.png" alt="">\
+                <img src="<?php
+                if (array_key_exists("loggedin", $_SESSION)){
+                    echo getProfilePicture($_SESSION['username']);
+                }else{
+                    echo "./photos/profile_pictures/default.png";
+                } ?>" alt="">\
             </div > '
             console.log(text)
             var container = document.getElementById('sidegallery');

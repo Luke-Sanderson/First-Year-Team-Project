@@ -171,6 +171,16 @@
             die("Could not connect to host :" . $pe->getMessage());
         }
     }
+    function getUserCount(){
+        try{
+            $sql = "SELECT COUNT(*) FROM users";
+            $stmt = selectRequest($sql, []);
+            return $stmt->fetch()["COUNT(*)"];
+        }
+        catch(PDOException $pe){
+            die("Could not connect to host :" . $pe->getMessage());
+        }
+    }
     function getPostInfo($post_id){
         try{
             $sql = "SELECT * FROM posts WHERE id=:post_id";
@@ -184,8 +194,18 @@
     function getUserID($username){
         try{
             $sql = "SELECT id FROM users WHERE username=:username";
-            $stmt = selectRequest($sql, [username => $username]);
+            $stmt = selectRequest($sql, ['username' => $username]);
             return $stmt->fetch()['id'];
+        }
+        catch(PDOException $pe){
+            die("Could not connect to host :" . $pe->getMessage());
+        }
+    }
+    function getProfilePicture($username){
+        try{
+            $sql = "SELECT profile_picture FROM users WHERE username=:username";
+            $stmt = selectRequest($sql, ['username' => $username]);
+            return $stmt->fetch()['profile_picture'];
         }
         catch(PDOException $pe){
             die("Could not connect to host :" . $pe->getMessage());

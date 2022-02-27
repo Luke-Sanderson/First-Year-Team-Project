@@ -38,22 +38,19 @@
         <h2 id="icon" align="Center"><img src="./photos/pet_logo.png" alt=""
                     height="150" width="430"></h2>
 
-    <form method="post" action="./checkLogin.php" align="Center" style="font-size:150%;" style="font: bold;">
-
-        <label for="fname" align="Center" style="font-size:150%;" style="font: bold;">Username:</label>
-        <input type="text" id="fname" name="fname" size="50"><br><br>
+    <form method="post" enctype="multipart/form-data" action="./uploadUser.php" align="Center" style="font-size:150%;" style="font: bold;">
+        <label for="username" align="Center" style="font-size:150%;" style="font: bold;">Username:</label>
+        <input type="text" id="username" name="username" size="50"><br><br>
         <label for="password" align="Center" style="font-size:150%;" style="font: bold;">Password:</label>
-        <input type="password" id="password" name="password" size="50"><br><br>
-        <a href="UI.php">
+        <input type="password" id="password" name="password" size="50">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <label for="imageupload" align="Center" style="font: bold;">Profile Picture:</label>
+        <input id="imageupload" name="imageupload" type="file"><br><br>
+
+        <a href="UI_loginPage.html">
          <button type="button" style="height:40px;width:100px">Cancel</button>
      </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-        <a href="UI_newUser.html">
-        <button type="button" style="height:40px;width:140px">Create account</button>
-    </a><br><br>
-
-
-        <button type="submit" style="height:40px;width:100px" style="Center"> Log in </button>
+        <button type="submit" style="height:40px;width:100px" style="Center"> Create </button>
 
     </form>
 

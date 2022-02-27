@@ -1,15 +1,16 @@
 <?php
+    //Adapted from https://www.w3schools.com/php/php_file_upload.asp
     include "databaseFunctions.php";
     session_start();
 
 
     $target_dir = "./photos/posts/";
 
-    $target_file = $target_dir . basename(getPostCount() + 1 . "." . strtolower(pathinfo($_FILES["imageupload"]["name"], PATHINFO_EXTENSION)));
-    $uploadOk = 1;
-    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    $imageFileType = strtolower(pathinfo($_FILES["imageupload"]["name"], PATHINFO_EXTENSION));
+    $target_file = $target_dir . basename(getPostCount() + 1 . "." . $imageFileType);
+    $uploadOk = 0;
 
-    if(!isset($_SESSION["loggedin"])){
+    if(!isset($_SESSION["imageupload"])){
         $uploadOk = 0;
     }
     else if(isset($_POST["submit"])){
