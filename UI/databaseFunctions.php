@@ -171,6 +171,16 @@
             die("Could not connect to host :" . $pe->getMessage());
         }
     }
+    function getUserCount(){
+        try{
+            $sql = "SELECT COUNT(*) FROM users";
+            $stmt = selectRequest($sql, []);
+            return $stmt->fetch()["COUNT(*)"];
+        }
+        catch(PDOException $pe){
+            die("Could not connect to host :" . $pe->getMessage());
+        }
+    }
     function getPostInfo($post_id){
         try{
             $sql = "SELECT * FROM posts WHERE id=:post_id";
