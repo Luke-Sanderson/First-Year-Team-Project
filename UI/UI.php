@@ -28,8 +28,8 @@
                 }
                 else{
                     echo '<div id="login">
-                <button onclick="location.href=\'UI_loginPage.html\'" type="button" style="height:25px;width:60px" style="Center"> Login </button>
-            </div>';
+                            <button onclick="location.href=\'UI_loginPage.html\'" type="button" style="height:25px;width:60px" style="Center"> Login </button>
+                        </div>';
                 } ?>
 
 
