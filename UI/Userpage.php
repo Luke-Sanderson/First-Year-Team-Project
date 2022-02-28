@@ -18,13 +18,28 @@
 
         <div id="group">
             <div id="post">
-                <button onclick="location.href='./UI_newPost.html'" type="button">Post</button>
+                <button onclick="location.href='./UI_newPost.php'" type="button">Post</button>
                  <!-- Change this link to POST page -->
             </div>
             <div id="login">
-                <button onclick="location.href='./UI_loginPage.html'" type="button">Login</button>
+                <?php
+                    include "databaseFunctions.php";
+                    session_start();
+
+                    if (array_key_exists("loggedin", $_SESSION)){
+                        echo '<div id="login">
+                                <button onclick="location.href=\'Userpage.php\'" type="button" style="height:25px;width:60px" style="Center"> '. $_SESSION['username'] . ' </button>
+                            </div>';
+                    }
+                    else{
+                        echo '<div id="login">
+                                <button onclick="location.href=\'UI_loginPage.html\'" type="button" style="height:25px;width:60px" style="Center"> Login </button>
+                            </div>';
+                    } ?>
+                <!--<button onclick="location.href='./UI_loginPage.html'" type="button">Login</button> -->
                 <!-- Change this link to EDIT page -->
                 <!-- Wait what? It should be login page right? -->
+                <!-- Added php for login but if it is EDIT page then delete php and add regular button -->
             </div>
         </div>
 
@@ -47,9 +62,20 @@
 
             </div>
             <div id="userinfor">
-                <h1>Name</h1>
-                <h2>Likes❤️<br>
-                Comments☁️</h2>
+                <?php
+                    if (array_key_exists("loggedin", $_SESSION)){
+                        echo "<h1>" . $_SESSION['username'] . "</h1>";
+
+                        $arr = getUserTotals($_SESSION['username']);
+                        echo "<h2>Likes " . $arr['likes'] . "❤️<br>";
+                        echo "Comments ". $arr['comments'] . "☁️</h2>";
+                    }
+                    else{
+                        echo    "<h1>Guest</h1>
+                                <h2>Likes 0❤️<br>
+                                Comments 0☁️</h2>";
+                    }
+                 ?>
 
             </div>
             <div id="edit">
@@ -103,7 +129,12 @@
 
         function addsidegallery() {
             var text = '<div id="imgDiv">\
-                <img src="./photos/test.png" alt="">\
+                <img src="<?php
+                if (array_key_exists("loggedin", $_SESSION)){
+                    echo getProfilePicture($_SESSION['username']);
+                }else{
+                    echo "./photos/profile_pictures/default.png";
+                } ?>" alt="">\
             </div > '
             console.log(text)
             var container = document.getElementById('sidegallery');
