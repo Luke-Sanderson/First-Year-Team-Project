@@ -88,7 +88,7 @@
                     echo '<div id="imgDiv">\
                             <img src="' . $postInfo['image'] . '" alt="">\
                             <p>' . $postInfo['pet_name'] . '</p>\
-                            <p>' . $postInfo['caption'] . '</p>\
+                            <p style="margin:-10px">' . $postInfo['caption'] . '</p>\
                          </div> ';
                 }
                 if ($postCount < 10){
