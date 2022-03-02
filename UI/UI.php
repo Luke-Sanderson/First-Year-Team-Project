@@ -40,7 +40,7 @@
         <div onclick="window.open('./UI.php', '_self')">🏠</div>
         <div>pet of the week</div>
         <div>(Navigation Bar)</div>
-        <div>Tags</div>
+        <div>Tags🚩</div>
         <div id="search">
 
             <div id="magnifier" onclick="window.open('https://youtu.be/o-YBDTqX_ZU')">🔍</div>
