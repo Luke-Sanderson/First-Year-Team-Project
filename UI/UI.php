@@ -92,7 +92,7 @@
                          </div> ';
                 }
                 if ($postCount < 10){
-                    for ($i=0; $i < 10 - $postCount; $i++) {
+                    for ($i=0; $i < 9 - $postCount; $i++) {
                         echo '<div id="imgDiv">\
                             <img src="./photos/test.png" alt="">\
                             <p>Sorry no more posts available</p>\
