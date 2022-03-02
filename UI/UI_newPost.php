@@ -55,7 +55,7 @@
         <input id="imageupload" name="imageupload" type="file"><br>
         <label for="petname" align="Center" style="font-size:150%;" style="font: bold;">PET'S NAME: </label>
         <input type="text" id="petname" name="petname" size="50"><br><br>
-        <label for="tags" align="Center" style="font-size:150%;" style="font: bold;">Tags🚩</label>
+        <label for="tags" align="Center" style="font-size:150%;" style="font: bold;">TAGS🚩:</label>
         <input type="text" id="tags" name="tags" size="50"><br><br>
         <label for="caption" align="Center" style="font-size:150%;" style="font: bold;">CAPTION: </label>
         <input type="text" id="caption" name="caption" size="50"><br><br>

@@ -18,7 +18,7 @@
 
         <div id="group">
             <div id="post">
-                <button onclick="location.href='./UI_newPost.php'" type="button">Post</button>
+                <button onclick="location.href='./UI_newPost.php'" type="button" style="height:25px;width:60px" style="Center"> Post </button>
                  <!-- Change this link to POST page -->
             </div>
             <div id="login">
@@ -79,8 +79,17 @@
 
             </div>
             <div id="edit">
-                <button onclick="location.href='https://google.com'" type="button">Edit</button>
+                <button onclick="location.href='https://google.com'" type="button" style="height:45px;width:80px;font-size:25px;" style="Center">Edit</button>
                 <!-- Change this link to EDIT page -->
+            </div>
+            <div id="line">
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
             </div>
 
 
@@ -98,7 +107,7 @@
             </div>
 
             <div id="footer">
-                <h3 id="icon" align="Center"><img src="pet_logo.png" alt=""
+                <h3 id="icon" align="Center"><img src="./photos/pet_logo.png" alt=""
                     height="40" width="150"></h3>
             </div>
         </section>
