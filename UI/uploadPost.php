@@ -37,7 +37,7 @@
         if (move_uploaded_file($_FILES["imageupload"]["tmp_name"], $target_file)) {
             addPost($_SESSION['userID'], $target_file, $_POST['petname'],  $_POST['caption'], explode(" ", strtolower($_POST['tags'])));
             echo "The file has been uploaded. ";
-            header('Location: UI_newPost.php?upload=true');
+            header('Location: Userpage.php');
         }
 
 
