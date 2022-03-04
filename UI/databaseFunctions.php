@@ -151,7 +151,7 @@
         }
 
     }
-    
+
     function getUserTotals ($username){
         try{
             $sql = "SELECT likes, comments FROM users WHERE username=:username";
@@ -213,5 +213,14 @@
             die("Could not connect to host :" . $pe->getMessage());
         }
     }
-
+    function getPostsFromUser($userID){
+        try{
+            $sql = "SELECT * FROM posts WHERE author_id=:id";
+            $stmt = selectRequest($sql, ['id' => $userID]);
+            return $stmt->fetchAll();
+        }
+        catch(PDOException $pe){
+            die("Could not connect to host :" . $pe->getMessage());
+        }
+    }
 ?>

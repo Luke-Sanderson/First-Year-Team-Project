@@ -108,17 +108,26 @@
     <script>
         function addgallery() {
 
-            var text = '<div id="imgDiv">\
-                <img src="./photos/test.png" alt="">\
-                <p>testing❤️lol</p>\
-            </div > '
-            var text2 = '<div id="imgDiv">\
-                <img src="./photos/test.png" alt="">\
-                <p>testing❤️lol</p>\
-            </div > '
-            for (var i = 1; i < 6; i++) {
-                text = text + text2
-            }
+            var text = '<?php
+                $posts = getPostsFromUser($_SESSION['userID']);
+                foreach ($posts as $post) {
+                   echo '<div id="imgDiv">\
+                           <img src="' . $post['image'] . '" alt="">\
+                           <p>' . $post['pet_name'] . '</p>\
+                           <p>' . $post['caption'] . '</p>\
+                        </div> ';
+                }
+
+
+                if (count($posts) < 9){
+                    for ($i=0; $i < 9 - count($posts); $i++) {
+                        echo '<div id="imgDiv">\
+                            <img src="./photos/test.png" alt="">\
+                            <p>Upload more posts to view them here</p>\
+                        </div > ';
+                    }
+                }
+             ?>'
             console.log(text)
             var container = document.getElementById('gallery');
 
