@@ -22,7 +22,7 @@
                 <button onclick="location.href='./UI_newPost.php'" type="button" style="height:25px;width:60px" style="Center"> Post </button>
             </div>
             <?php
-                if (array_key_exists("loggedin", $_SESSION)){
+                if (array_key_exists("loggedin", $_SESSION) && $_SESSION['loggedin']){
                     echo '<div id="login">
                             <button onclick="location.href=\'Userpage.php\'" type="button" style="height:25px;width:60px" style="Center">' . $_SESSION['username'] . '</button>
                         </div>';
