@@ -25,6 +25,7 @@
         $stmt = $pdo->prepare($sql);
         $stmt->execute($varArray);
     }
+
     function echoUsers(){
         try {
             $sql = "SELECT * FROM users";
@@ -42,6 +43,18 @@
         }
 
     }
+    function validateUserCredentials($username, $password){
+        try{
+            $sql = "SELECT password FROM users WHERE username=:username";
+            $stmt = selectRequest($sql, ['username' => $username]);
+
+            return ($stmt->fetch()['password'] == $password);
+        }
+        catch (PDOException $pe){
+            die("Could not connect to host :" . $pe->getMessage());
+        }
+    }
+
     function addUser($username, $password, $profile_picture){
         try{
             $sql = "INSERT INTO users (username, password, profile_picture) VALUES (:username, :password, :profile_picture)";
@@ -57,7 +70,6 @@
             die("Could not connect to host :" . $pe->getMessage());
         }
     }
-
     function addPost($author_id, $image, $petname, $caption, $tags){
         try{
             $sql = "INSERT INTO posts (author_id, image, pet_name, caption, votes) VALUES (:author_id, :image, :petname, :caption, 0)";
@@ -139,17 +151,7 @@
         }
 
     }
-    function validateUserCredentials($username, $password){
-        try{
-            $sql = "SELECT password FROM users WHERE username=:username";
-            $stmt = selectRequest($sql, ['username' => $username]);
-
-            return ($stmt->fetch()['password'] == $password);
-        }
-        catch (PDOException $pe){
-            die("Could not connect to host :" . $pe->getMessage());
-        }
-    }
+    
     function getUserTotals ($username){
         try{
             $sql = "SELECT likes, comments FROM users WHERE username=:username";
