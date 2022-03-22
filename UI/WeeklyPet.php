@@ -9,11 +9,7 @@
 </head>
 
 <body>
-
-    <div id="title">
-        <h1 id="icon"><img src="./photos/pet_logo.png" alt=""
-                    height="85" width="310"></h1>
-    </div>
+    <h1 align="Center" style="font-size: 400%; margin-bottom: -1%;">Pet of The Week 👑</h1>
     <div id="group">
             <div id="post">
                 <button onclick="location.href='./UI_newPost.php'" type="button" style="height:25px;width:60px" style="Center"> Post </button>
@@ -49,8 +45,14 @@
     </nav>
     <div id="content">
         <section>
-            <div id="sidegallery">
+            <div id="latesttime">
 
+            </div>
+            <div id="slatesttime">
+
+            </div>
+            <div id="furthesttime">
+                
             </div>
         </section>
 
@@ -78,7 +80,7 @@
                 <p>testing❤️lol</p>\
             </div > '
             for (var i = 0; i < 8; i++) {
-                text += text + text2
+                text = text + text2
             }
             
             // var text = '<?php
@@ -107,26 +109,32 @@
 
         }
         addgallery();
-        function addsidegallery() {
-            var text = '<div id="imgDiv">\
-                <img src="./photos/test.png" alt="">\
-                <p>testing❤️lol</p>\
-            </div > '
-            var text2 = '<div id="imgDiv">\
-                <img src="./photos/test.png" alt=""> \
-                <p>testing❤️lol</p>\
-            </div>'
-            for (var i = 0; i < 2; i++) {
-                text = text + text2
-            }
-            console.log(text)
-            var container = document.getElementById('sidegallery');
-            container.innerHTML = text
-
-            console.log(container);
-
+        
+        function GetDate(LastDate){
+            var dt = new Date();
+            dt.setDate(dt.getDate()-LastDate);
+            var year = dt.getFullYear();
+            var month = dt.getMonth() + 1;
+            var day = dt.getDate();
+            fullTime = day+"/"+month+"/"+year
+            return fullTime;
         }
-        addsidegallery();
+        GetDate();
+
+        function AddDate(){
+            var d = new Date();
+            var fullTime1 = GetDate(d.getDay());
+            var fullTime2 = GetDate(d.getDay()+7);
+            var fullTime3 = GetDate(d.getDay()+14);
+            var timer1 = document.getElementById('latesttime');
+            timer1.innerHTML = fullTime1
+            var timer2 = document.getElementById('slatesttime');
+            timer2.innerHTML = fullTime2
+            var timer3 = document.getElementById('furthesttime');
+            timer3.innerHTML = fullTime3
+        }
+        AddDate();
+
     </script>
 </body>
 

@@ -47,7 +47,7 @@
 
     <nav id="nav">
         <div onclick="window.open('./UI.php', '_self')">🏠</div>
-        <div>pet of the week</div>
+        <div onclick="location.href='./WeeklyPet.php'">pet of the week</div>
         <div>(Navigation Bar)</div>
         <div>Tags🚩</div>
         <div id="search">
