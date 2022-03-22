@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" type="text/css" href="postpage.css">
+    <link rel="stylesheet" type="text/css" href="css/postpage.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Pet Community</title>
@@ -53,26 +53,42 @@
     </nav>
 
     <div>
-        <?php
-            if (array_key_exists("id", $_GET)) {
-                echo '<img id="imgDiv" src="./photos/posts/' . $_GET["id"] . '.jpeg" alt="">';
-            }
-            else{
-                echo '<img src="./photos/test.png" alt="">';
-            }
-            ?>
         <div id="post">
+            <br>
+            <?php
+                if (array_key_exists("id", $_GET) && is_numeric($_GET["id"]) && $_GET["id"] <= getPostCount()){
+                    $postInfo = getPostInfo($_GET["id"]);
 
-                <h1>Name<br>
+                    echo '<img style="height: 140px;width: 270px;justify: center;" src="./photos/posts/' . $_GET["id"] . '.jpeg" alt="">';
+                    echo '<h1>Name ' . $postInfo['pet_name'] . '<br>';
+                    echo 'Caption ' . $postInfo['caption'] . '<br>';
+                    $str = 'Tags';
+                    $stmt = getTags($postInfo["id"]);
+                    while ($tag = $stmt->fetch()){
+                        $str = $str . " " . $tag["tag_name"];
+                    }
+                    echo $str . '<br>';
 
-                    Tags<br>
-                    Likes❤️
-                    <button style="height:30px;width:60px" type="button">❤️</button><br>
-                    <!-- Need add Likes function to show the number of likes they got-->
-                Comments☁️<br>
-                <textarea name="comments" style="font-family:sans-serif;font-size:20px;">Add your comments here ~</textarea>
-                <button style="height:30px;width:60px" type="button">Submit</button>
-                <!-- Need add comments function to show the comments under the post-->
+                    echo 'Likes ' . $postInfo['votes'] . '❤️';
+                    echo '<button style="height:30px;width:60px" type="button">❤️</button><br>';
+
+                    echo '
+                        Comments☁️<br>
+                        <textarea name="comments" style="font-family:sans-serif;font-size:20px;">Add your comments here ~</textarea>
+                        <button style="height:30px;width:60px" type="button">Submit</button>';
+
+                    $str = 'Comments: ';
+                    $stmt = getComments($postInfo["id"]);
+                    while ($comment = $stmt->fetch()){
+                        $str = "<br>" . getUserName($comment["author_id"]) . ": " . $comment["text"];
+                    }
+
+                }
+                else{
+                    echo '<img src="./photos/test.png" alt="">';
+                }
+                ?>
+
             </h1>
 
             </div>
