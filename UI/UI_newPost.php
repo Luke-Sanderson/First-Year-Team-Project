@@ -19,10 +19,10 @@
 
         <div id="group">
             <div id="post">
-                <button onclick="location.href='./UI_newPost.html'" type="button" style="height:25px;width:60px" style="Center"> Post </button>
+                <button onclick="location.href='./UI_newPost.php'" type="button" style="height:25px;width:60px" style="Center"> Post </button>
             </div>
             <?php
-                if (array_key_exists("loggedin", $_SESSION)){
+                if (array_key_exists("loggedin", $_SESSION) && $_SESSION['loggedin']){
                     echo '<div id="login">
                             <button onclick="location.href=\'Userpage.php\'" type="button" style="height:25px;width:60px" style="Center">' . $_SESSION['username'] . '</button>
                         </div>';
@@ -42,9 +42,10 @@
         <div>Username</div>
         <div>Tags🚩</div>
         <div id="search">
-
-            <div id="magnifier" onclick="window.open('https://youtu.be/o-YBDTqX_ZU')">🔍</div>
-
+            <form class="searchBar" action="searchResults.php" method="post">
+                <input type="search" name="searchBox">
+                🔍
+            </form>
         </div>
     </nav>
 
