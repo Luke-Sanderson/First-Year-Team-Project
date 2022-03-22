@@ -5,7 +5,11 @@
     <link rel="stylesheet" type="text/css" href="postpage.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pet Coummunity</title>
+    <title>Pet Community</title>
+    <<?php
+        include 'databaseFunctions.php';
+        session_start();
+     ?>
 </head>
 
 <body>
@@ -16,12 +20,20 @@
     </div>
     <div id="group">
             <div id="post">
-                <button onclick="location.href='https://google.com'" type="button">POST</button>
-                 <!-- Change this link to POST page -->
+                <button onclick="location.href='./UI_newPost.php'" type="button" style="height:25px;width:60px" style="Center"> Post </button>
             </div>
             <div id="login">
-                <button onclick="location.href='https://google.com'" type="button">LOGIN</button>
-                <!-- Change this link to LOGIN page -->
+                <?php
+                    if (array_key_exists("loggedin", $_SESSION)){
+                        echo '<div id="login">
+                                <button onclick="location.href=\'Userpage.php\'" type="button" style="height:25px;width:60px" style="Center">' . $_SESSION['username'] . '</button>
+                            </div>';
+                    }
+                    else{
+                        echo '<div id="login">
+                                <button onclick="location.href=\'UI_loginPage.html\'" type="button" style="height:25px;width:60px" style="Center"> Login </button>
+                            </div>';
+                    } ?>
             </div>
 
 
@@ -41,9 +53,16 @@
     </nav>
 
     <div>
-        <img src="./photos/test.png" alt="" class="center">
+        <?php
+            if (array_key_exists("id", $_GET)) {
+                echo '<img id="imgDiv" src="./photos/posts/' . $_GET["id"] . '.jpeg" alt="">';
+            }
+            else{
+                echo '<img src="./photos/test.png" alt="">';
+            }
+            ?>
         <div id="post">
-                
+
                 <h1>Name<br>
 
                     Tags<br>
@@ -59,11 +78,11 @@
             </div>
         <div id="back">
             <button style="height:30px;width:60px" onclick="window.open('./UI.php')" type="button">BACK</button>
-        
+
         </div>
     </div>
 
-    
+
 </body>
 
 </html>
