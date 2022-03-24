@@ -86,7 +86,7 @@
                 $postCount = getPostCount();
                 for ($i = $postCount; $i >= 1 ; $i--) {
                     $postInfo = getPostInfo($i);
-                    echo '<div id="imgDiv">\
+                    echo '<div id="imgDiv" onclick="openPost(\\\'' . $postInfo['id'] . '\\\')">\
                             <img src="' . $postInfo['image'] . '" alt="">\
                             <p>' . $postInfo['pet_name'] . '</p>\
                             <p style="margin:-10px">' . $postInfo['caption'] . '</p>\
@@ -101,7 +101,7 @@
                     }
                 }
              ?>'
-            console.log(text)
+            //console.log(text)
             var container = document.getElementById('gallery');
 
             container.innerHTML = text
@@ -120,14 +120,18 @@
             for (var i = 0; i < 2; i++) {
                 text = text + text2
             }
-            console.log(text)
+            //console.log(text)
             var container = document.getElementById('sidegallery');
             container.innerHTML = text
 
-            console.log(container);
+            //console.log(container);
 
         }
         addsidegallery();
+
+        function openPost(id) {
+            window.location.href = "postpage.php?id=" + id;
+        }
     </script>
 </body>
 

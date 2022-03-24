@@ -203,6 +203,17 @@
             die("Could not connect to host :" . $pe->getMessage());
         }
     }
+    function getUserName($id){
+        try{
+            $sql = "SELECT username FROM users WHERE id=:id";
+            $stmt = selectRequest($sql, ['id' => $id]);
+            return $stmt->fetch()['username'];
+        }
+        catch(PDOException $pe){
+            die("Could not connect to host :" . $pe->getMessage());
+        }
+
+    }
     function getProfilePicture($username){
         try{
             $sql = "SELECT profile_picture FROM users WHERE username=:username";
@@ -213,6 +224,16 @@
             die("Could not connect to host :" . $pe->getMessage());
         }
     }
+    function getTags($id) {
+        try{
+            $sql = "SELECT tag_name FROM tag_post_table WHERE post_id=:id";
+            $stmt = selectRequest($sql, ['id' => $id]);
+            return $stmt;
+        }
+        catch(PDOException $pe){
+            die("Could not connect to host :" . $pe->getMessage());
+        }
+
     function getPostsFromUser($userID){
         try{
             $sql = "SELECT * FROM posts WHERE author_id=:id";
@@ -223,6 +244,15 @@
             die("Could not connect to host :" . $pe->getMessage());
         }
     }
+    function getComments($id) {
+        try{
+            $sql = "SELECT author_id, 'text' FROM comments WHERE post_id=:id";
+            $stmt = selectRequest($sql, ['id' => $id]);
+            return $stmt;
+        }
+        catch(PDOException $pe){
+            die("Could not connect to host :" . $pe->getMessage());
+        }
     function getPostIDFromTag($tag){
         try{
             $sql = "SELECT post_id FROM tag_post_table WHERE tag_name=:tag";
