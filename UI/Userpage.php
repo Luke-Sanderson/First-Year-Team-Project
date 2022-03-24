@@ -86,6 +86,22 @@
             <div id="logout">
                 <button onclick="window.location.href='logout.php'" type="button">Logout</button>
             </div>
+            <div id="line">
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+            </div>
 
 
         </section>
@@ -124,7 +140,7 @@
 
 
                 if (count($posts) < 9){
-                    for ($i=0; $i < 10 - count($posts); $i++) {
+                    for ($i=0; $i < 9 - count($posts); $i++) {
                         echo '<div id="imgDiv">\
                             <img src="./photos/test.png" alt="">\
                             <p>Upload more posts to view them here</p>\
