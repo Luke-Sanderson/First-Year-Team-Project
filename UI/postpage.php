@@ -59,10 +59,10 @@
                 if (array_key_exists("id", $_GET) && is_numeric($_GET["id"]) && $_GET["id"] <= getPostCount()){
                     $postInfo = getPostInfo($_GET["id"]);
 
-                    echo '<img style="height: 140px;width: 270px;justify: center;" src="./photos/posts/' . $_GET["id"] . '.jpeg" alt="">';
-                    echo '<h1>Name ' . $postInfo['pet_name'] . '<br>';
-                    echo 'Caption ' . $postInfo['caption'] . '<br>';
-                    $str = 'Tags';
+                    echo '<img style="height: 140px;width: 270px;justify: center;" src="' . $postInfo['image'] . '" alt="">';
+                    echo '<h1>Name: ' . $postInfo['pet_name'] . '<br>';
+                    echo 'Caption: ' . $postInfo['caption'] . '<br>';
+                    $str = 'Tags:';
                     $stmt = getTags($postInfo["id"]);
                     while ($tag = $stmt->fetch()){
                         $str = $str . " " . $tag["tag_name"];
@@ -93,7 +93,7 @@
 
             </div>
         <div id="back">
-            <button style="height:30px;width:60px" onclick="window.open('./UI.php')" type="button">BACK</button>
+            <button style="height:30px;width:60px" onclick="location.href='./UI.php'" type="button">BACK</button>
 
         </div>
     </div>
