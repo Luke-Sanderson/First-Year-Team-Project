@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="./css/UI.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pet Coummunity</title>
+    <title>Pet Community</title>
 </head>
 
 <body>
@@ -40,12 +40,14 @@
         <div onclick="window.open('./UI.php', '_self')">🏠</div>
         <div>pet of the week</div>
         <div>(Navigation Bar)</div>
-        <div>Tags🚩</div>
+        <div>Tags</div>
         <div id="search">
             <form class="searchBar" action="searchResults.php" method="post">
                 <input type="search" name="searchBox">
                 🔍
             </form>
+<!--            <div id="magnifier" onclick="window.open('https://youtu.be/o-YBDTqX_ZU')">🔍</div>
+-->
         </div>
     </nav>
     <div id="content">
@@ -70,43 +72,33 @@
     </div>
     <script>
         function addgallery() {
-            /*var text = '<div id="imgDiv">\
-                <img src="./photos/test.png" alt="">\
-                <p>testing❤️lol</p>\
-            </div > '
-             text2 = '<div id="imgDiv">\
-                <img src="./photos/test.png" alt="">\
-                <p>testing❤️lol</p>\
-            </div > '
-            for (var i = 0; i < 8; i++) {
-                text += text + text2
-            }
-            */
             var text = '<?php
-                $postCount = getPostCount();
-                for ($i = $postCount; $i >= 1 ; $i--) {
-                    $postInfo = getPostInfo($i);
-                    echo '<div id="imgDiv" onclick="openPost(\\\'' . $postInfo['id'] . '\\\')">\
-                            <img src="' . $postInfo['image'] . '" alt="">\
-                            <p>' . $postInfo['pet_name'] . '</p>\
-                            <p style="margin:-10px">' . $postInfo['caption'] . '</p>\
-                         </div> ';
+                $postIDs = getPostIDFromTag($_POST['searchBox']);
+                foreach ($postIDs as $id) {
+                    $post = getPostInfo($id['post_id']);
+                    echo '<div id="imgDiv">\
+                           <img src="' . $post['image'] . '" alt="">\
+                           <p>' . $post['pet_name'] . '</p>\
+                           <p>' . $post['caption'] . '</p>\
+                        </div> ';
                 }
-                if ($postCount < 10){
-                    for ($i=0; $i < 9 - $postCount; $i++) {
+
+
+                if (count($postIDs) < 9){
+                    for ($i=0; $i < 9 - count($postIDs); $i++) {
                         echo '<div id="imgDiv">\
                             <img src="./photos/test.png" alt="">\
-                            <p>Sorry no more posts available</p>\
+                            <p>No more posts fit the tag '. $_POST['searchBox'] . '</p>\
                         </div > ';
                     }
                 }
              ?>'
-            //console.log(text)
+            console.log(text)
             var container = document.getElementById('gallery');
 
             container.innerHTML = text
-
         }
+
         addgallery();
         function addsidegallery() {
             var text = '<div id="imgDiv">\
@@ -120,18 +112,14 @@
             for (var i = 0; i < 2; i++) {
                 text = text + text2
             }
-            //console.log(text)
+            console.log(text)
             var container = document.getElementById('sidegallery');
             container.innerHTML = text
 
-            //console.log(container);
+            console.log(container);
 
         }
         addsidegallery();
-
-        function openPost(id) {
-            window.location.href = "postpage.php?id=" + id;
-        }
     </script>
 </body>
 
