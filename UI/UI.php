@@ -40,7 +40,7 @@
         <div onclick="window.open('./UI.php', '_self')">🏠</div>
         <div>pet of the week</div>
         <div>(Navigation Bar)</div>
-        <div>Tags</div>
+        <div>Tags🚩</div>
         <div id="search">
             <form class="searchBar" action="searchResults.php" method="post">
                 <input type="search" name="searchBox">
@@ -89,11 +89,11 @@
                     echo '<div id="imgDiv">\
                             <img src="' . $postInfo['image'] . '" alt="">\
                             <p>' . $postInfo['pet_name'] . '</p>\
-                            <p>' . $postInfo['caption'] . '</p>\
+                            <p style="margin:-10px">' . $postInfo['caption'] . '</p>\
                          </div> ';
                 }
                 if ($postCount < 10){
-                    for ($i=0; $i < 10 - $postCount; $i++) {
+                    for ($i=0; $i < 9 - $postCount; $i++) {
                         echo '<div id="imgDiv">\
                             <img src="./photos/test.png" alt="">\
                             <p>Sorry no more posts available</p>\
