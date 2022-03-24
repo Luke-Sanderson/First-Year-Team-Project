@@ -119,7 +119,6 @@
             fullTime = day+"/"+month+"/"+year
             return fullTime;
         }
-        GetDate();
 
         function AddDate(){
             var d = new Date();
