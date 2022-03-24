@@ -233,7 +233,7 @@
         catch(PDOException $pe){
             die("Could not connect to host :" . $pe->getMessage());
         }
-
+    }
     function getPostsFromUser($userID){
         try{
             $sql = "SELECT * FROM posts WHERE author_id=:id";
@@ -253,6 +253,7 @@
         catch(PDOException $pe){
             die("Could not connect to host :" . $pe->getMessage());
         }
+    }
     function getPostIDFromTag($tag){
         try{
             $sql = "SELECT post_id FROM tag_post_table WHERE tag_name=:tag";
