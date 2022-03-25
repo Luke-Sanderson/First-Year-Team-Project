@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Pet Community</title>
-    <<?php
+    <?php
         include 'databaseFunctions.php';
         session_start();
      ?>
@@ -59,7 +59,7 @@
                 if (array_key_exists("id", $_GET) && is_numeric($_GET["id"]) && $_GET["id"] <= getPostCount()){
                     $postInfo = getPostInfo($_GET["id"]);
 
-                    echo '<img style="height: 140px;width: 270px;justify: center;" src="' . $postInfo['image'] . '" alt="">';
+                    echo '<img style="height: 200px; justify: center;" src="' . $postInfo['image'] . '" alt="">';
                     echo '<h1>Name: ' . $postInfo['pet_name'] . '<br>';
                     echo 'Caption: ' . $postInfo['caption'] . '<br>';
                     $str = 'Tags:';
@@ -69,8 +69,7 @@
                     }
                     echo $str . '<br>';
 
-                    echo 'Likes ' . $postInfo['votes'] . '❤️';
-                    echo '<button style="height:30px;width:60px" type="button">❤️</button><br>';
+                    echo '<button style="height:50px;width:100px" type="button">Likes: ' . $postInfo['votes'] . ' ❤️</button><br>';
 
                     echo '
                         Comments☁️<br>
