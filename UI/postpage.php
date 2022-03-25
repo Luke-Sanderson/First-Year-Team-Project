@@ -86,6 +86,7 @@
                 }
                 else{
                     echo '<img src="./photos/test.png" alt="">';
+                    echo '<h1>No post associated with this ID</h1>';
                 }
                 ?>
 
