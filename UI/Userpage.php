@@ -18,7 +18,7 @@
 
         <div id="group">
             <div id="post">
-                <button onclick="location.href='./UI_newPost.php'" type="button" style="height:25px;width:60px" style="Center"> Post </button>
+                <button onclick="location.href='./UI_newPost.php'" type="button" style="height:25px;width:60px; font-weight: bold;"> Post </button>
                  <!-- Change this link to POST page -->
             </div>
             <div id="login">
@@ -28,12 +28,12 @@
 
                     if (array_key_exists("loggedin", $_SESSION) && $_SESSION['loggedin']){
                         echo '<div id="login">
-                                <button onclick="location.href=\'Userpage.php\'" type="button" style="height:25px;width:60px" style="Center"> '. $_SESSION['username'] . ' </button>
+                                <button onclick="location.href=\'Userpage.php\'" type="button" style="height:25px;width:60px; font-weight: bold;"> '. $_SESSION['username'] . ' </button>
                             </div>';
                     }
                     else{
                         echo '<div id="login">
-                                <button onclick="location.href=\'UI_loginPage.html\'" type="button" style="height:25px;width:60px" style="Center"> Login </button>
+                                <button onclick="location.href=\'UI_loginPage.html\'" type="button" style="height:25px;width:60px; font-weight: bold;"> Login </button>
                             </div>';
                     } ?>
                 <!--<button onclick="location.href='./UI_loginPage.html'" type="button">Login</button> -->
@@ -47,13 +47,14 @@
 
     <nav id="nav">
         <div onclick="window.open('./UI.php', '_self')">🏠</div>
-        <div>pet of the week</div>
+        <div>Pet of the week 👑</div>
         <div>(Navigation Bar)</div>
         <div>Tags🚩</div>
         <div id="search">
-
-            <div id="magnifier" onclick="window.open('https://youtu.be/o-YBDTqX_ZU')">🔍</div>
-
+            <form class="searchBar" action="searchResults.php" method="post">
+                <input type="search" name="searchBox">
+                🔍
+                </form>
         </div>
     </nav>
     <div id="content">
@@ -80,11 +81,12 @@
             </div>
 
             <div id="edit">
-                <button onclick="location.href='https://google.com'" type="button" style="height:45px;width:80px;font-size:25px;" style="Center">Edit</button>
+                <button onclick="location.href='https://google.com'" type="button" style="height:45px;width:80px;font-size:25px; font-weight: bold;">Edit</button>
                 <!-- Change this link to EDIT page -->
             </div>
+            <br>
             <div id="logout">
-                <button onclick="window.location.href='logout.php'" type="button">Logout</button>
+                <button onclick="window.location.href='logout.php'" type="button" style="height:45px; width:100px;font-size:25px; font-weight: bold;">Logout</button>
             </div>
             <div id="line">
                 <br>
@@ -143,7 +145,7 @@
                     for ($i=0; $i < 9 - count($posts); $i++) {
                         echo '<div id="imgDiv">\
                             <img src="./photos/test.png" alt="">\
-                            <p>Upload more posts to view them here</p>\
+                            <p style="font-family: Arial;">Upload more posts to view them here</p>\
                         </div > ';
                     }
                 }

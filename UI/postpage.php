@@ -26,12 +26,12 @@
                 <?php
                     if (array_key_exists("loggedin", $_SESSION)){
                         echo '<div id="login">
-                                <button onclick="location.href=\'Userpage.php\'" type="button" style="height:25px;width:60px" style="Center">' . $_SESSION['username'] . '</button>
+                                <button onclick="location.href=\'Userpage.php\'" type="button" style="height:25px;width:60px; font-weight: bold;">' . $_SESSION['username'] . '</button>
                             </div>';
                     }
                     else{
                         echo '<div id="login">
-                                <button onclick="location.href=\'UI_loginPage.html\'" type="button" style="height:25px;width:60px" style="Center"> Login </button>
+                                <button onclick="location.href=\'UI_loginPage.html\'" type="button" style="height:25px;width:60px; font-weight: bold;"> Login </button>
                             </div>';
                     } ?>
             </div>
@@ -42,7 +42,7 @@
     <br />
     <nav id="nav">
         <div onclick="window.open('./UI.php', '_self')">🏠</div>
-        <div>pet of the week</div>
+        <div>Pet of the week 👑</div>
         <div>(Navigation Bar)</div>
         <div>Tags</div>
         <div id="search">
