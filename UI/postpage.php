@@ -24,19 +24,13 @@
             </div>
             <div id="login">
                 <?php
-                    if (array_key_exists("loggedin", $_SESSION)){
-                        echo '<div id="login">
-                                <button onclick="location.href=\'Userpage.php\'" type="button" style="height:25px;width:60px" style="Center">' . $_SESSION['username'] . '</button>
-                            </div>';
+                if (array_key_exists("loggedin", $_SESSION) && $_SESSION['loggedin']){
+                        echo '<button onclick="location.href=\'Userpage.php\'" type="button" style="height:25px;width:60px" style="Center">' . $_SESSION['username'] . '</button>';
                     }
                     else{
-                        echo '<div id="login">
-                                <button onclick="location.href=\'UI_loginPage.html\'" type="button" style="height:25px;width:60px" style="Center"> Login </button>
-                            </div>';
+                        echo '<button onclick="location.href=\'UI_loginPage.html\'" type="button" style="height:25px;width:60px" style="Center"> Login </button>';
                     } ?>
             </div>
-
-
         </div>
     <br />
     <br />
@@ -73,24 +67,27 @@
                         if(!isLiked($_GET["id"], $_SESSION["userID"])){
                             echo '<button style="height:50px;width:100px" type="button" onclick="location.href=\'like.php?post_id=' . $_GET["id"] . '\'">Like: ' . $postInfo['votes'] . ' ❤️</button><br>';
                         }
-
                         else{
-                            echo '<button style="height:50px;width:100px;background-color:#808080" type="button" onclick="location.href=\'like.php?post_id=' . $_GET["id"] . '\'">Like: ' . $postInfo['votes'] . ' ❤️</button><br>';
+                            echo '<button style="height:50px;width:100px;background-color:#808080" type="button" onclick="location.href=\'unlike.php?post_id=' . $_GET["id"] . '\'">Liked: ' . $postInfo['votes'] . ' ❤️</button><br>';
                         }
                     }
                     else {
-                        echo '<button style="height:50px;width:100px" type="button">Likes: ' . $postInfo['votes'] . ' ❤️</button><br>';
+                        echo '<button style="height:50px;width:100px" type="button" onclick="location.href=\'UI_loginPage.html\'">Likes: ' . $postInfo['votes'] . ' ❤️</button><br>';
                     }
                     echo '
                         Comments☁️<br>
-                        <textarea name="comments" style="font-family:sans-serif;font-size:20px;">Add your comments here ~</textarea>
-                        <button style="height:30px;width:60px" type="button">Submit</button>';
+                        <form method="post" action="./newComment.php?post_id='.$_GET["id"].'">
+                            <input type="text" name="text" style="font-family:sans-serif;font-size:20px;" value="Add your comments here ~">
+                            <input type="submit" style="height:30px;width:80px" value="Comment">
+                        </form>';
 
-                    $str = 'Comments: ';
+                    $str = '';
+                    echo '</h1>';
                     $stmt = getComments($postInfo["id"]);
                     while ($comment = $stmt->fetch()){
-                        $str = "<br>" . getUserName($comment["author_id"]) . ": " . $comment["text"];
+                        $str = $str . getUserName($comment["author_id"]) . ": \"" . $comment["text"] . "\"<br>";
                     }
+                    echo $str . '<br>';
 
                 }
                 else{
@@ -99,7 +96,6 @@
                 }
                 ?>
 
-            </h1>
 
             </div>
         <div id="back">
