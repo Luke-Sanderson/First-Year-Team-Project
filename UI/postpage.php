@@ -69,8 +69,18 @@
                     }
                     echo $str . '<br>';
 
-                    echo '<button style="height:50px;width:100px" type="button">Likes: ' . $postInfo['votes'] . ' ❤️</button><br>';
+                    if (array_key_exists("loggedin", $_SESSION) && $_SESSION['loggedin']){
+                        if(!isLiked($_GET["id"], $_SESSION["userID"])){
+                            echo '<button style="height:50px;width:100px" type="button" onclick="location.href=\'like.php?post_id=' . $_GET["id"] . '\'">Like: ' . $postInfo['votes'] . ' ❤️</button><br>';
+                        }
 
+                        else{
+                            echo '<button style="height:50px;width:100px;background-color:#808080" type="button" onclick="location.href=\'like.php?post_id=' . $_GET["id"] . '\'">Like: ' . $postInfo['votes'] . ' ❤️</button><br>';
+                        }
+                    }
+                    else {
+                        echo '<button style="height:50px;width:100px" type="button">Likes: ' . $postInfo['votes'] . ' ❤️</button><br>';
+                    }
                     echo '
                         Comments☁️<br>
                         <textarea name="comments" style="font-family:sans-serif;font-size:20px;">Add your comments here ~</textarea>
