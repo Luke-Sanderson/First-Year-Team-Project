@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="./css/UI.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pet Coummunity</title>
+    <title>Pet Community</title>
 </head>
 
 <body>
@@ -70,18 +70,6 @@
     </div>
     <script>
         function addgallery() {
-            var text = '<div id="imgDiv">\
-                <img src="./photos/test.png" alt="">\
-                <p>testing❤️lol</p>\
-            </div > '
-             text2 = '<div id="imgDiv">\
-                <img src="./photos/test.png" alt="">\
-                <p>testing❤️lol</p>\
-            </div > '
-            for (var i = 0; i < 8; i++) {
-                text += text + text2
-            }
-            */
             var text = '<?php
                 $postCount = getPostCount();
                 for ($i = $postCount; $i >= 1 ; $i--) {
@@ -101,7 +89,6 @@
                     }
                 }
              ?>'
-            //console.log(text)
             var container = document.getElementById('gallery');
 
             container.innerHTML = text
@@ -120,11 +107,8 @@
             for (var i = 0; i < 2; i++) {
                 text = text + text2
             }
-            //console.log(text)
             var container = document.getElementById('sidegallery');
             container.innerHTML = text
-
-            //console.log(container);
 
         }
         addsidegallery();
