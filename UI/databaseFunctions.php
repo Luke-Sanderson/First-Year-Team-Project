@@ -116,6 +116,52 @@
             die("Could not connect to host :" . $pe->getMessage());
         }
     }
+    function addLike($post_id, $user_id) {
+        try{
+            $sql = "INSERT INTO likes (post_id, user_id) VALUES (:post_id, :user_id)";
+            insertRequest($sql, [
+                        'post_id' => $post_id,
+                        'user_id' => $user_id]);
+            echo "Added like successfully";
+
+            $sql = "UPDATE posts SET votes = votes + 1 WHERE id=:post_id";
+            insertRequest($sql, ['post_id' => $post_id]);
+            echo "Incrememented like count";
+        }
+        catch (PDOException $pe)
+        {
+            die("Could not connect to host :" . $pe->getMessage());
+        }
+    }
+
+    function removeLike($post_id, $user_id) {
+        try{
+            $sql = "DELETE FROM likes WHERE post_id=:post_id AND user_id=:user_id";
+            insertRequest($sql, [
+                        'post_id' => $post_id,
+                        'user_id' => $user_id]);
+            echo "Removed like successfully";
+
+            $sql = "UPDATE posts SET votes = votes - 1 WHERE id=:post_id";
+            insertRequest($sql, ['post_id' => $post_id]);
+            echo "Decrememnted like count";
+        }
+        catch (PDOException $pe)
+        {
+            die("Could not connect to host :" . $pe->getMessage());
+        }
+    }
+    function isLiked($post_id, $user_id) {
+        try{
+            $sql = "SELECT * FROM likes WHERE post_id=:post_id AND user_id=:user_id";
+            $stmt = selectRequest($sql, ['post_id' => $post_id, 'user_id' => $user_id]);
+
+            return $stmt->fetch() != null;
+        }
+        catch (PDOException $pe){
+            die("Could not connect to host :" . $pe->getMessage());
+        }
+    }
     function addTag($post_id, $tag_name){
         try{
             $sql = "SELECT * FROM tag_post_table WHERE tag_name=:tag_name AND post_id=:post_id";
@@ -151,7 +197,34 @@
         }
 
     }
+    function incrementLikeTotal($author_id) {
+        try{
+            $sql = "UPDATE users SET likes = likes + 1 WHERE id=:author_id";
+            $stmt = insertRequest($sql, ['author_id' => $author_id]);
+        }
+        catch (PDOException $pe){
+            die("Could not connect to host :" . $pe->getMessage());
+        }
+    }
+    function incrementCommentTotal($author_id) {
+        try{
+            $sql = "UPDATE users SET comments = comments + 1 WHERE id=:author_id";
+            $stmt = insertRequest($sql, ['author_id' => $author_id]);
+        }
+        catch (PDOException $pe){
+            die("Could not connect to host :" . $pe->getMessage());
+        }
+    }
+    function decrementLikeTotal($author_id) {
+        try{
+            $sql = "UPDATE users SET likes = likes - 1 WHERE id=:author_id";
+            $stmt = insertRequest($sql, ['author_id' => $author_id]);
 
+        }
+        catch (PDOException $pe){
+            die("Could not connect to host :" . $pe->getMessage());
+        }
+    }
     function getUserTotals ($username){
         try{
             $sql = "SELECT likes, comments FROM users WHERE username=:username";
@@ -246,7 +319,7 @@
     }
     function getComments($id) {
         try{
-            $sql = "SELECT author_id, 'text' FROM comments WHERE post_id=:id";
+            $sql = "SELECT author_id, text FROM comments WHERE post_id=:id";
             $stmt = selectRequest($sql, ['id' => $id]);
             return $stmt;
         }
@@ -264,4 +337,5 @@
             die("Could not connect to host :" . $pe->getMessage());
         }
     }
+
 ?>
