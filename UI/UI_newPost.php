@@ -19,17 +19,17 @@
 
         <div id="group">
             <div id="post">
-                <button onclick="location.href='./UI_newPost.php'" type="button" style="height:25px;width:60px" style="Center"> Post </button>
+                <button onclick="location.href='./UI_newPost.php'" type="button" style="height:25px;width:60px; font-weight: bold;"> Post </button>
             </div>
             <?php
                 if (array_key_exists("loggedin", $_SESSION) && $_SESSION['loggedin']){
                     echo '<div id="login">
-                            <button onclick="location.href=\'Userpage.php\'" type="button" style="height:25px;width:60px" style="Center">' . $_SESSION['username'] . '</button>
+                            <button onclick="location.href=\'Userpage.php\'" type="button" style="height:25px;width:60px; font-weight: bold;">' . $_SESSION['username'] . '</button>
                         </div>';
                 }
                 else{
                     echo '<div id="login">
-                            <button onclick="location.href=\'UI_loginPage.html\'" type="button" style="height:25px;width:60px" style="Center"> Login </button>
+                            <button onclick="location.href=\'UI_loginPage.html\'" type="button" style="height:25px;width:60px; "> Login </button>
                         </div>';
                 } ?>
         </div>
@@ -38,7 +38,7 @@
     </div>
     <nav id="nav">
         <div onclick="window.open('./UI.php', '_self')">🏠</div>
-        <div onclick="location.href='./WeeklyPet.php'">pet of the week</div>
+        <div onclick="location.href='./WeeklyPet.php'">Pet of the week 👑</div>
         <div>Username</div>
         <div>Tags🚩</div>
         <div id="search">
@@ -51,17 +51,17 @@
 
  <!--    <input id="Mybutton" style="margin-left:570px;margin-top:65px;height:250px;width:250px" type=button value="➕" href="needsUPDATE.php">&nbsp;&nbsp;
 -->
-
-    <form action="./uploadPost.php" method="post" enctype="multipart/form-data" align="Center" style="font-size:150%;" style="font: bold;">&nbsp;&nbsp;
+    <br><br><br><br><br>
+    <form action="./uploadPost.php" method="post" enctype="multipart/form-data" align="Center" style="font-size:130%;" style="font: bold;">&nbsp;&nbsp;
         <input id="imageupload" name="imageupload" type="file"><br>
-        <label for="petname" align="Center" style="font-size:150%;" style="font: bold;">PET'S NAME: </label>
+        <label for="petname" align="Center" style="font-size:150%; font-family: Arial; font-weight: bold;">PET'S NAME: </label>
         <input type="text" id="petname" name="petname" size="50"><br><br>
-        <label for="tags" align="Center" style="font-size:150%;" style="font: bold;">TAGS🚩:</label>
+        <label for="tags" align="Center" style="font-size:150%; font-family: Arial; font-weight: bold;">TAGS🚩:</label>
         <input type="text" id="tags" name="tags" size="50"><br><br>
-        <label for="caption" align="Center" style="font-size:150%;" style="font: bold;">CAPTION: </label>
+        <label for="caption" align="Center" style="font-size:150%; font-family: Arial; font-weight: bold;">CAPTION: </label>
         <input type="text" id="caption" name="caption" size="50"><br><br>
 
-        <input type="submit" name="submit" style="height:40px;width:100px" style="Center" value="Submit">
+        <input type="submit" name="submit" style="height:40px;width:100px; font-family: Arial; font-weight: bold;" value="Submit">
 
     </form>
 

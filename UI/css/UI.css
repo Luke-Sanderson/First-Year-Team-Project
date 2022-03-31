@@ -43,6 +43,7 @@ body {
   border-right-style: solid;
   font-size: large;
   font-weight: bold;
+  font-family: Arial;
 }
 #nav #search {
   border-right-style: none;

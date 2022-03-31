@@ -16,19 +16,19 @@
     </div>
     <div id="group">
             <div id="post">
-                <button onclick="location.href='./UI_newPost.php'" type="button" style="height:25px;width:60px" style="Center"> Post </button>
+                <button onclick="location.href='./UI_newPost.php'" type="button" style="height:25px;width:60px; font-weight: bold;"> Post </button>
             </div>
             <?php
                 include 'databaseFunctions.php';
                 session_start();
                 if (array_key_exists("loggedin", $_SESSION) && $_SESSION['loggedin']){
                     echo '<div id="login">
-                            <button onclick="location.href=\'Userpage.php\'" type="button" style="height:25px;width:60px" style="Center">' . $_SESSION['username'] . '</button>
+                            <button onclick="location.href=\'Userpage.php\'" type="button" style="height:25px;width:60px; font-weight: bold;">' . $_SESSION['username'] . '</button>
                         </div>';
                 }
                 else{
                     echo '<div id="login">
-                            <button onclick="location.href=\'UI_loginPage.html\'" type="button" style="height:25px;width:60px" style="Center"> Login </button>
+                            <button onclick="location.href=\'UI_loginPage.html\'" type="button" style="height:25px;width:60px; font-weight: bold;"> Login </button>
                         </div>';
                 } ?>
 
@@ -38,7 +38,7 @@
     <br />
     <nav id="nav">
         <div onclick="window.open('./UI.php', '_self')">🏠</div>
-        <div>pet of the week</div>
+        <div>Pet of the week 👑</div>
         <div>(Navigation Bar)</div>
         <div>Tags</div>
         <div id="search">
@@ -88,7 +88,7 @@
                     for ($i=0; $i < 9 - count($postIDs); $i++) {
                         echo '<div id="imgDiv">\
                             <img src="./photos/test.png" alt="">\
-                            <p>No more posts fit the tag '. $_POST['searchBox'] . '</p>\
+                            <p style="font-family: Arial;">No more posts fit the tag '. $_POST['searchBox'] . '</p>\
                         </div > ';
                     }
                 }
@@ -103,11 +103,11 @@
         function addsidegallery() {
             var text = '<div id="imgDiv">\
                 <img src="./photos/test.png" alt="">\
-                <p>testing❤️lol</p>\
+                <p style="font-family: Arial;">testing❤️lol</p>\
             </div > '
             var text2 = '<div id="imgDiv">\
                 <img src="./photos/test.png" alt=""> \
-                <p>testing❤️lol</p>\
+                <p style="font-family: Arial;">testing❤️lol</p>\
             </div>'
             for (var i = 0; i < 2; i++) {
                 text = text + text2
