@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="./css/UI_loginPage.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pet Coummunity</title>
+    <title>Pet Community</title>
 </head>
 
 <body>
@@ -16,7 +16,7 @@
                 <button onclick="location.href='./UI_newPost.php'" type="button" style="height:25px;width:60px" style="Center"> Post </button>
             </div>
             <div id="login">
-                <button onclick="location.href='./UI_loginPage.html'" type="button" style="height:25px;width:60px" style="Center"> Login </button>
+                <button onclick="location.href='./UI.php'" type="button" style="height:25px;width:60px" style="Center"> Home </button>
             </div>
         </div>
 
@@ -28,9 +28,10 @@
         <div>Username</div>
         <div>Tags🚩</div>
         <div id="search">
-
-            <div id="magnifier" onclick="window.open('https://youtu.be/o-YBDTqX_ZU')">🔍</div>
-
+            <form class="searchBar" action="searchResults.php" method="post">
+                <input type="search" name="searchBox">
+                🔍
+            </form>
         </div>
     </nav>
 
@@ -44,16 +45,11 @@
         <input type="text" id="fname" name="fname" size="50"><br><br>
         <label for="password" align="Center" style="font-size:150%;" style="font: bold;">Password:</label>
         <input type="password" id="password" name="password" size="50"><br><br>
-        <a href="UI.php">
-         <button type="button" style="height:40px;width:100px">Cancel</button>
-     </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-        <a href="UI_newUser.html">
-        <button type="button" style="height:40px;width:140px">Create account</button>
-    </a><br><br>
-
-
+        <button onclick="location.href='./UI.php'" type="button" style="height:40px;width:100px"> Cancel </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button type="submit" style="height:40px;width:100px" style="Center"> Log in </button>
+        <br>
+        <br>
+        <button onclick="location.href='./UI_newUser.html'" type="button" style="height:40px;width:140px"> Create account </button>
 
     </form>
 
