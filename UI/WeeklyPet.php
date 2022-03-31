@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="./css/UI.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pet Coummunity</title>
+    <title>Pet Community</title>
 </head>
 
 <body>
@@ -52,7 +52,7 @@
 
             </div>
             <div id="furthesttime">
-                
+
             </div>
         </section>
 
@@ -82,7 +82,7 @@
             for (var i = 0; i < 8; i++) {
                 text = text + text2
             }
-            
+
             // var text = '<?php
             //     $postCount = getPostCount();
             //     for ($i = $postCount; $i >= 1 ; $i--) {
@@ -109,7 +109,7 @@
 
         }
         addgallery();
-        
+
         function GetDate(LastDate){
             var dt = new Date();
             dt.setDate(dt.getDate()-LastDate);
