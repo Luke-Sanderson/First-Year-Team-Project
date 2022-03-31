@@ -106,3 +106,24 @@ body {
   text-align: right;
   margin-right: 20px;
 }
+#content #latesttime {
+  text-align: center;
+  font-size: 250%;
+  display: grid;
+  grid-template-rows: 1fr;
+  padding: 100px 35px 40px 35px;
+}
+#content #slatesttime {
+  text-align: center;
+  font-size: 250%;
+  display: grid;
+  grid-template-rows: 1fr;
+  padding: 120px 35px 40px 35px;
+}
+#content #furthesttime {
+  text-align: center;
+  font-size: 250%;
+  display: grid;
+  grid-template-rows: 1fr;
+  padding: 140px 35px 40px 35px;
+}

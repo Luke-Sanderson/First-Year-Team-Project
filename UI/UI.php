@@ -70,7 +70,7 @@
     </div>
     <script>
         function addgallery() {
-            /*var text = '<div id="imgDiv">\
+            var text = '<div id="imgDiv">\
                 <img src="./photos/test.png" alt="">\
                 <p>testing❤️lol</p>\
             </div > '
