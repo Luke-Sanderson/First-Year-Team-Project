@@ -96,20 +96,25 @@
         }
         addgallery();
         function addsidegallery() {
-            var text = '<div id="imgDiv">\
-                <img src="./photos/test.png" alt="">\
-                <p style="font-family: Arial;">testing❤️lol</p>\
-            </div > '
-            var text2 = '<div id="imgDiv">\
-                <img src="./photos/test.png" alt=""> \
-                <p style="font-family: Arial;">testing❤️lol</p>\
-            </div>'
-            for (var i = 0; i < 2; i++) {
-                text = text + text2
-            }
-            var container = document.getElementById('sidegallery');
-            container.innerHTML = text
 
+            var text = '<?php
+                $winners = getPetOfWeekWinners();
+                foreach ($winners as $winnerID) {
+                    $post = getPostInfo($winnerID["post_id"]);
+
+                    echo '<div id="imgDiv" onclick="openPost(\\\'' . $post['id'] . '\\\')">\
+                            <h2 style="font-family: Arial; text-align: Center;"> Week: ' . $winnerID['DATE_FORMAT(week_of_win, \'%d/%b/%y\')'] . '</h2>\
+                           <img src="' . $post['image'] . '" alt="">\
+                           <p style="font-family: Arial; font-weight: bold;" >' . $post['pet_name'] . '</p>\
+                           <p style="margin:-10px; font-family: Arial;">' . $post['caption'] . '</p>\
+                        </div><br><br><br> ';
+                }
+
+             ?>'
+            console.log(text)
+            var container = document.getElementById('sidegallery');
+
+            container.innerHTML = text
         }
         addsidegallery();
 

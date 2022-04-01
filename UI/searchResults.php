@@ -76,10 +76,10 @@
                 $postIDs = getPostIDFromTag($_POST['searchBox']);
                 foreach ($postIDs as $id) {
                     $post = getPostInfo($id['post_id']);
-                    echo '<div id="imgDiv">\
+                    echo '<div id="imgDiv" onclick="openPost(\\\'' . $post['id'] . '\\\')">\
                            <img src="' . $post['image'] . '" alt="">\
-                           <p>' . $post['pet_name'] . '</p>\
-                           <p>' . $post['caption'] . '</p>\
+                           <p style="font-family: Arial; font-weight: bold;">' . $post['pet_name'] . '</p>\
+                           <p style="margin:-10px; font-family: Arial;">' . $post['caption'] . '</p>\
                         </div> ';
                 }
 
@@ -120,6 +120,10 @@
 
         }
         addsidegallery();
+
+        function openPost(id) {
+            window.location.href = "postpage.php?id=" + id;
+        }
     </script>
 </body>
 

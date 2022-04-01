@@ -19,7 +19,6 @@
         <div id="group">
             <div id="post">
                 <button onclick="location.href='./UI_newPost.php'" type="button" style="height:25px;width:60px; font-weight: bold;"> Post </button>
-                 <!-- Change this link to POST page -->
             </div>
             <div id="login">
                 <?php
@@ -36,10 +35,6 @@
                                 <button onclick="location.href=\'UI_loginPage.html\'" type="button" style="height:25px;width:60px; font-weight: bold;"> Login </button>
                             </div>';
                     } ?>
-                <!--<button onclick="location.href='./UI_loginPage.html'" type="button">Login</button> -->
-                <!-- Change this link to EDIT page -->
-                <!-- Wait what? It should be login page right? -->
-                <!-- Added php for login but if it is EDIT page then delete php and add regular button -->
             </div>
         </div>
 
@@ -133,10 +128,10 @@
             var text = '<?php
                 $posts = getPostsFromUser($_SESSION['userID']);
                 foreach ($posts as $post) {
-                   echo '<div id="imgDiv">\
+                   echo '<div id="imgDiv" onclick="openPost(\\\'' . $post['id'] . '\\\')">\
                            <img src="' . $post['image'] . '" alt="">\
-                           <p>' . $post['pet_name'] . '</p>\
-                           <p>' . $post['caption'] . '</p>\
+                           <p style="font-family: Arial; font-weight: bold;" >' . $post['pet_name'] . '</p>\
+                           <p style="margin:-10px; font-family: Arial;">' . $post['caption'] . '</p>\
                         </div> ';
                 }
 
@@ -175,6 +170,10 @@
 
         }
         addsidegallery();
+
+        function openPost(id) {
+            window.location.href = "postpage.php?id=" + id;
+        }
     </script>
 </body>
 
