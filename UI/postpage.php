@@ -40,9 +40,10 @@
         <div>(Navigation Bar)</div>
         <div>Tags</div>
         <div id="search">
-
-            <div id="magnifier" onclick="window.open('https://youtu.be/o-YBDTqX_ZU')">🔍</div>
-
+            <form class="searchBar" action="searchResults.php" method="post">
+                <input type="search" name="searchBox">
+                🔍
+            </form>
         </div>
     </nav>
 
