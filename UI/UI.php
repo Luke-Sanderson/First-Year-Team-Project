@@ -101,22 +101,15 @@
                 $winners = getPetOfWeekWinners();
                 foreach ($winners as $winnerID) {
                     $post = getPostInfo($winnerID["post_id"]);
+
                     echo '<div id="imgDiv" onclick="openPost(\\\'' . $post['id'] . '\\\')">\
+                            <h2 style="font-family: Arial; text-align: Center;"> Week: ' . $winnerID['DATE_FORMAT(week_of_win, \'%d/%b/%y\')'] . '</h2>\
                            <img src="' . $post['image'] . '" alt="">\
                            <p style="font-family: Arial; font-weight: bold;" >' . $post['pet_name'] . '</p>\
                            <p style="margin:-10px; font-family: Arial;">' . $post['caption'] . '</p>\
-                        </div> ';
+                        </div><br><br><br> ';
                 }
 
-
-                if (count($winners) < 3){
-                    for ($i=0; $i < 3 - count($winners); $i++) {
-                        echo '<div id="imgDiv">\
-                            <img src="./photos/test.png" alt="">\
-                            <p style="font-family: Arial;">More winners coming in subsequent weeks</p>\
-                        </div > ';
-                    }
-                }
              ?>'
             console.log(text)
             var container = document.getElementById('sidegallery');

@@ -339,7 +339,7 @@
     }
     function getPetOfWeekWinners() {
         try{
-            $sql = "SELECT post_id FROM pet_of_the_week ORDER BY week_of_win DESC";
+            $sql = "SELECT DATE_FORMAT(week_of_win, '%d/%b/%y'), post_id FROM pet_of_the_week ORDER BY week_of_win DESC";
             $stmt = selectRequest($sql, []);
             return $stmt->fetchAll();
         }
