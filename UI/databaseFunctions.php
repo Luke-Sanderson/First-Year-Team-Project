@@ -337,5 +337,15 @@
             die("Could not connect to host :" . $pe->getMessage());
         }
     }
+    function getPetOfWeekWinners() {
+        try{
+            $sql = "SELECT post_id FROM pet_of_the_week ORDER BY week_of_win DESC";
+            $stmt = selectRequest($sql, []);
+            return $stmt->fetchAll();
+        }
+        catch(PDOException $pe){
+            die("Could not connect to host :" . $pe->getMessage());
+        }
+    }
 
 ?>
